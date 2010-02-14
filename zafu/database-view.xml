@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns="http://mindginative.com/projects/zafu/XMLSchema" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://mindginative.com/projects/zafu/XMLSchema
+                     http://mindginative.com/projects/zafu/XMLSchema/zafu.xsd">
+	<VIEW name="database-view" prompt="db@zafu > ">
+		<!--=======================================================-->
+		<COMMAND name="exit"
+                 help="Go back to main menu"
+                 view="root-view" />
+		<!--=======================================================-->
+		<COMMAND name="db"
+		         help="check database status" />		
+		<!--=======================================================-->		
+		<COMMAND name="db stat"
+		         help="display database status">
+		    <ACTION>
+				source /usr/local/etc/zafu/.zafu;
+				curl $COUCHDB_HOST_URI
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->	
+		<COMMAND name="db set"
+		         help="DB - setup database settings"/>
+		 <!--=======================================================-->		
+		<COMMAND name="db set name"
+		         help="setup CouchDB database">
+			<PARAM name="database"
+	             help="Database name"
+	             ptype="STRING"/>
+		    <ACTION>
+				/usr/local/etc/zafu/zafu.sh COUCHDB_DATABASE ${database}; 
+				echo "CouchDB database : ${database}"
+			</ACTION>
+		</COMMAND>		
+		 <!--=======================================================-->
+		<COMMAND name="db set hostname"
+		         help="setup CouchDB hostname or IP">
+			<PARAM name="hostname"
+	             help="Hostname or IP"
+	             ptype="STRING"/>
+		    <ACTION>
+				/usr/local/etc/zafu/zafu.sh COUCHDB_HOSTNAME ${hostname}; 
+				echo "CouchDB Hostname/IP : ${hostname}"
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->		
+		<COMMAND name="db set port"
+		         help="setup CouchDB port">
+			<PARAM name="port"
+	             help="Port number"
+	             ptype="STRING"/>
+		    <ACTION>
+				/usr/local/etc/zafu/zafu.sh COUCHDB_PORT ${port}; 
+				echo "CouchDB Port : ${port}"
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->		
+		<COMMAND name="db set username"
+		         help="setup CouchDB username">
+			<PARAM name="username"
+	             help="DB username"
+	             ptype="STRING"/>
+		    <ACTION>
+				/usr/local/etc/zafu/zafu.sh COUCHDB_USERNAME ${username}; 
+				echo "CouchDB Username : ${username}"
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->		
+		<COMMAND name="db set password"
+		         help="setup CouchDB password">
+			<PARAM name="password"
+	             help="DB password"
+	             ptype="STRING"/>
+		    <ACTION>
+				/usr/local/etc/zafu/zafu.sh COUCHDB_PASSWORD ${password}; 
+				echo "CouchDB Password : ${password}"
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->		
+		<COMMAND name="db get"
+		         help="DB - retrieve database informations" />
+		 <!--=======================================================-->		
+		<COMMAND name="db get info"
+		         help="DB - get a database information">
+			<PARAM name="db_name"
+	             help="database name"
+	             ptype="STRING"/>
+		    <ACTION>
+				source /usr/local/etc/zafu/.zafu;
+				curl $COUCHDB_HOST_URI/${db_name}/
+			</ACTION>
+		</COMMAND>		
+		 <!--=======================================================-->		
+		<COMMAND name="db list"
+		         help="List all available databases">
+		    <ACTION>
+				source /usr/local/etc/zafu/.zafu;
+				curl -X GET $COUCHDB_HOST_URI/_all_dbs
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->	
+		<COMMAND name="db create"
+		         help="Create new database">
+			<PARAM name="db_name"
+	               help="The name to used for the named view"
+	               ptype="STRING"/>
+		    <ACTION>
+				source /usr/local/etc/zafu/.zafu;
+				curl -X PUT $COUCHDB_HOST_URI/${db_name}/
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->	
+		<COMMAND name="db delete"
+		         help="Delete database">
+			<PARAM name="db_name"
+	              help="The name to used for the named view"
+	              ptype="STRING"/>	
+		    <ACTION>
+				source /usr/local/etc/zafu/.zafu;
+				curl -X DELETE $COUCHDB_HOST_URI/${db_name}/
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->		
+	</VIEW>
+</CLISH_MODULE>

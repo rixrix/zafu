@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns="http://mindginative.com/projects/zafu/XMLSchema" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://mindginative.com/projects/zafu/XMLSchema
+                     http://mindginative.com/projects/zafu/XMLSchema/zafu.xsd">
+	<VIEW name="documents-view" prompt="doc@zafu > ">
+		<!--=======================================================-->
+		<COMMAND name="exit"
+                 help="Go back to main menu"
+                 view="root-view" />
+		<!--=======================================================-->
+		<COMMAND name="doc"
+		         help="Document operations" />		
+		 <!--=======================================================-->		
+		<COMMAND name="doc create"
+		         help="Document operations" />		
+		 <!--=======================================================-->		
+		<COMMAND name="doc create empty"
+		         help="Create an empty document">
+			<PARAM name="db_name"
+	             help="Database name"
+	             ptype="STRING"/>
+		    <ACTION>
+				source /usr/local/etc/zafu/.zafu ; 
+				curl -X POST $COUCHDB_HOST_URI/${db_name}/ -H "Content-Type: application/json" -d {}
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->		
+		<COMMAND name="doc create new"
+		         help="Create new document">
+			<PARAM name="db_name"
+	             help="Database name"
+	             ptype="STRING"/>
+			<PARAM name="doc_data"
+	             help="Document data"
+	             ptype="STRING"/>
+		    <ACTION>
+				source /usr/local/etc/zafu/.zafu;
+				new_doc_data=`echo "${doc_data}" | sed s/\'/\"/g `;				
+				curl -X POST $COUCHDB_HOST_URI/${db_name}/ --header "Content-Type: application/json" --data "{$new_doc_data}"
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->
+		<COMMAND name="doc get"
+		         help="Document operations" />		
+		 <!--=======================================================-->		
+		<COMMAND name="doc get list"
+		         help="Create an empty document">
+			<PARAM name="db_name"
+	             help="Database name"
+	             ptype="STRING"/>
+		    <ACTION>
+				source /usr/local/etc/zafu/.zafu ; 
+				curl -X GET $COUCHDB_HOST_URI/${db_name}/_all_docs
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->				
+		<COMMAND name="doc delete"
+		         help="Delete document">
+			<PARAM name="db_name"
+	             help="Database name"
+	             ptype="STRING"/>
+			<PARAM name="doc_id"
+	             help="Document name"
+	             ptype="STRING"/>	
+			<PARAM name="doc_rev"
+	             help="Document revision"
+	             ptype="STRING"/>	
+		    <ACTION>
+				source /usr/local/etc/zafu/.zafu ; 
+				new_doc_rev=${doc_rev};
+				curl -X DELETE $COUCHDB_HOST_URI/${db_name}/${doc_id}?rev=$new_doc_rev
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->			
+	</VIEW>
+</CLISH_MODULE>

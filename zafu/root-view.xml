@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns="http://mindginative.com/projects/zafu/XMLSchema" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://mindginative.com/projects/zafu/XMLSchema
+                     http://mindginative.com/projects/zafu/XMLSchema/zafu.xsd">
+ 	<!--=======================================================-->
+    <VIEW name="root-view"
+        prompt="zafu &gt; ">
+        <!--===================================================-->
+        <COMMAND name="exit"
+                 help="Exit this CLI session">
+            <ACTION builtin="clish_close"/>
+        </COMMAND>
+        <!--===================================================-->
+    </VIEW>
+ 	<!--=======================================================-->    
+</CLISH_MODULE>

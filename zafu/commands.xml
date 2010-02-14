@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns="http://mindginative.com/projects/zafu/XMLSchema" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://mindginative.com/projects/zafu/XMLSchema
+                     http://mindginative.com/projects/zafu/XMLSchema/zafu.xsd">
+    <!--=======================================================-->
+    <COMMAND name="help"
+             help="Display an overview of the CLI syntax">
+        <ACTION builtin="clish_overview"/>
+    </COMMAND>
+    <!--=======================================================-->
+    <COMMAND name="logout"
+             help="Logout of the current CLI session">
+        <ACTION builtin="clish_close"/>
+    </COMMAND>
+    <!--=======================================================-->
+    <COMMAND name="top"
+             help="Return to the default mode"
+             view="root-view"
+             viewid=""/>
+    <!--=======================================================-->
+    <COMMAND name="history"
+             help="Display the current session's command line history">
+        <PARAM name="limit"
+               help="Set the size of history list (zero means unbounded)"
+              ptype="UINT"
+            default=""/>
+        <ACTION builtin="clish_history">${limit}</ACTION>
+    </COMMAND>
+    <!--=======================================================-->
+	<COMMAND name="cls"
+	         help="Clear console window">
+	    <ACTION>clear</ACTION>
+	</COMMAND>
+	<!--=======================================================-->
+	<COMMAND name="database"
+	         help="DB Utilities"
+			 view="database-view"/>
+	<!--=======================================================-->
+	<COMMAND name="design"
+	         help="DB Design"
+			 view="design-view"/>
+	<!--=======================================================-->
+	<COMMAND name="schema"
+	         help="DB Schema"
+			 view="schema-view"/>
+	<!--=======================================================-->
+	<COMMAND name="documents"
+	         help="DB Document"
+			 view="documents-view"/>
+	<!--=======================================================-->
+	<COMMAND name="query"
+	         help="DB Query"
+			 view="query-view"/>
+	<!--=======================================================-->
+	<COMMAND name="replication"
+	         help="DB Replication"
+			 view="replication-view"/>
+	<!--=======================================================-->
+	<COMMAND name="tools"
+	         help="DB Tools"
+			 view="tools-view"/>
+	<!--=======================================================-->
+	<COMMAND name="views"
+	         help="DB Views"
+			 view="views-view"/>
+	<!--=======================================================-->
+</CLISH_MODULE>

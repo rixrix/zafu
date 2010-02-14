@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns="http://mindginative.com/projects/zafu/XMLSchema" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://mindginative.com/projects/zafu/XMLSchema
+                     http://mindginative.com/projects/zafu/XMLSchema/zafu.xsd">
+	<VIEW name="config-view" prompt="config@zafu > ">
+	</VIEW>
+</CLISH_MODULE>

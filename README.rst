@@ -1,15 +1,5 @@
 zafu - a CouchDB CLI Administration Console
 ==========================================================
-********************************************************************************
-*                                           __                                 *
-*                                         / _|                                 *
-*                                ______ _| |_ _   _                            *
-*                               |_  / _` |  _| | | |                           *
-*                                / / (_| | | | |_| |                           *
-*                               /___\__,_|_|  \__,_|                           *
-*                     zafu - a CouchDB CLI Administration Console              *
-*                                      v0.1.0                                  *
-********************************************************************************
 
 `zafu <http://github.com/rixrix/zafu>`_ a Cisco-Like CLI on a *Nix system for `CouchDB <http://couchdb.apache.org/>`.
 
@@ -17,6 +7,7 @@ zafu - a CouchDB CLI Administration Console
 
 News
 ----
+
  * 2010-02-14 : **Version 0.1.0**. Initial release.
 	
 Installation
@@ -50,6 +41,7 @@ for zafu is based from `CLISH <http://clish.sourceforge.net/>` project.
 
 Features
 --------
+
  * CLI
 
    - for a more in-depth CLI features have a look at `CLISH <http://clish.sourceforge.net/>` "Key Design Points"
@@ -60,13 +52,16 @@ Features
 
 Todo
 ----
+
  * Better documentation ;)
 
 License
 -------
+
  * BSD License
 
 Authors
 ------
+
  * Richard Sentino <richard.sentino@gmail.com> - zafu implementation
  * See LICENSE file to see all the authors of the CLISH implementation

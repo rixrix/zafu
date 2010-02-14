@@ -1,7 +1,7 @@
 zafu - a CouchDB CLI Administration Console
 ===========================================
 
-zafu is a Cisco-Like CLI on a *Nix system for `CouchDB <http://couchdb.apache.org/>`__.
+zafu is a Cisco-Like CLI on a *Nix system for the `CouchDB <http://couchdb.apache.org>`_ database.
 
 .. contents::
 

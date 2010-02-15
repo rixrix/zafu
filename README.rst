@@ -2,14 +2,13 @@ zafu - a CouchDB CLI Administration Console
 ===========================================
 
 zafu is a Cisco-Like CLI on a Nix system for the 
-`CouchDB <http://couchdb.apache.org>`_ database.
+`CouchDB <http://couchdb.apache.org>`_ database. 
 
 .. contents::
 
 News
 ----
-
- * 2010-02-14 : **Version 0.1.0**. Initial release.
+* 2010-02-14 : **Version 0.1.0**. Initial release.
 	
 Installation Steps
 ------------------
@@ -45,15 +44,20 @@ for zafu is based from `CLISH <http://clish.sourceforge.net/>`_ project.
 
 Features
 --------
+* zafu
+  - provides a very simple CLI interface to the CouchDB database
+  - command auto-completion and syntax checking
+  - takes care of the long/tedious cURL commands
 * CLI
   - for a more in-depth CLI features have a look at `CLISH <http://clish.sourceforge.net/>`_ "Key Design Points"
 
-* zafu
-  - TBA
-
 Todo
 ----
-* Better documentation ;)
+* more CouchDB CLI features (of course, who doesn't want ?)
+* Better documentation 
+* friendly installation process
+* platform packages
+* as a community project this will evolve over the time
 
 License
 -------

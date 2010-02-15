@@ -45,27 +45,21 @@ for zafu is based from `CLISH <http://clish.sourceforge.net/>`_ project.
 
 Features
 --------
+* CLI
+  - for a more in-depth CLI features have a look at `CLISH <http://clish.sourceforge.net/>`_ "Key Design Points"
 
- * CLI
-
-   - for a more in-depth CLI features have a look at `CLISH <http://clish.sourceforge.net/>`_ "Key Design Points"
-
- * zafu
-
-   - TBA
+* zafu
+  - TBA
 
 Todo
 ----
-
- * Better documentation ;)
+* Better documentation ;)
 
 License
 -------
-
- * BSD License
+* BSD License
 
 Authors
 -------
-
- * Richard Sentino <richard.sentino@gmail.com> - zafu implementation
- * See LICENSE file to see all the authors of the CLISH project
+* Richard Sentino <richard.sentino@gmail.com> - zafu implementation
+* See LICENSE file to see all the authors of the CLISH project

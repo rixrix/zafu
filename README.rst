@@ -11,26 +11,29 @@ News
 
  * 2010-02-14 : **Version 0.1.0**. Initial release.
 	
-Installation
-------------
+Installation Steps
+------------------
 
-Download the initial release `zafu-0.1.0.tar.gz <http://github.com/downloads/rixrix/zafu/zafu-0.1.0.tar.gz>`_::
+1. Download the initial release `zafu-0.1.0.tar.gz <http://github.com/downloads/rixrix/zafu/zafu-0.1.0.tar.gz>`_::
   
   $ wget http://github.com/downloads/rixrix/zafu/zafu-0.1.0.tar.gz
 
-Untar and issue the following command inside the zafu directory::
+2. Untar and issue the following command inside the zafu directory::
   
   $ ./configure --program-transform-name="s/clish/zafu/"
 
-Compile and install::
+3. Compile and install::
 
   $ make && sudo make install
 
-Copy the zafu-0.1.0/zafu/ folder to the following path::
+4. Copy the zafu-0.1.0/zafu/ folder to the following path::
 
   $ cp -fr zafu /usr/local/etc/zafu
 
-Issue the zafu command to launch the "zafu" shell::
+5. or you may skip #4 and just set the ZAFU_PATH environment variable and 
+   point to zafu folder under the zafu-0.1.0 root directory.
+
+6. Issue the zafu command to launch the "zafu" shell::
 
   $ zafu
 

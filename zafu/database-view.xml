@@ -10,21 +10,13 @@
                  view="root-view" />
 		<!--=======================================================-->
 		<COMMAND name="db"
-		         help="check database status" />		
+		         help="DB - Database Utilities" />		
 		<!--=======================================================-->		
-		<COMMAND name="db stat"
-		         help="display database status">
-		    <ACTION>
-				source /usr/local/etc/zafu/.zafu;
-				curl $COUCHDB_HOST_URI
-			</ACTION>
-		</COMMAND>
-		 <!--=======================================================-->	
 		<COMMAND name="db set"
-		         help="DB - setup database settings"/>
+		         help="DB - Set database commands"/>
 		 <!--=======================================================-->		
 		<COMMAND name="db set name"
-		         help="setup CouchDB database">
+		         help="DB - Setup CouchDB database name">
 			<PARAM name="database"
 	             help="Database name"
 	             ptype="STRING"/>
@@ -35,7 +27,7 @@
 		</COMMAND>		
 		 <!--=======================================================-->
 		<COMMAND name="db set hostname"
-		         help="setup CouchDB hostname or IP">
+		         help="DB - Set CouchDB hostname or IP">
 			<PARAM name="hostname"
 	             help="Hostname or IP"
 	             ptype="STRING"/>
@@ -46,7 +38,7 @@
 		</COMMAND>
 		 <!--=======================================================-->		
 		<COMMAND name="db set port"
-		         help="setup CouchDB port">
+		         help="DB - Set CouchDB port">
 			<PARAM name="port"
 	             help="Port number"
 	             ptype="STRING"/>
@@ -57,7 +49,7 @@
 		</COMMAND>
 		 <!--=======================================================-->		
 		<COMMAND name="db set username"
-		         help="setup CouchDB username">
+		         help="DB - Set CouchDB username">
 			<PARAM name="username"
 	             help="DB username"
 	             ptype="STRING"/>
@@ -68,7 +60,7 @@
 		</COMMAND>
 		 <!--=======================================================-->		
 		<COMMAND name="db set password"
-		         help="setup CouchDB password">
+		         help="DB - Set CouchDB password">
 			<PARAM name="password"
 	             help="DB password"
 	             ptype="STRING"/>
@@ -78,22 +70,55 @@
 			</ACTION>
 		</COMMAND>
 		 <!--=======================================================-->		
-		<COMMAND name="db get"
-		         help="DB - retrieve database informations" />
-		 <!--=======================================================-->		
-		<COMMAND name="db get info"
-		         help="DB - get a database information">
+		<COMMAND name="db set compaction"
+		         help="DB - Data compaction">
 			<PARAM name="db_name"
-	             help="database name"
+	             help="DB name"
 	             ptype="STRING"/>
 		    <ACTION>
 				source /usr/local/etc/zafu/.zafu;
-				curl $COUCHDB_HOST_URI/${db_name}/
+				curl -X POST $COUCHDB_HOST_URI/${db_name}/_compact
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->		
+		<COMMAND name="db set cleanup"
+		         help="DB - Cleanup old view data">
+			<PARAM name="db_name"
+	             help="DB name"
+	             ptype="STRING"/>
+		    <ACTION>
+				source /usr/local/etc/zafu/.zafu;
+				curl -X POST $COUCHDB_HOST_URI/${db_name}/_view_cleanup
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->		
+		<COMMAND name="db get"
+		         help="DB - Retrieve database informations" />
+		 <!--=======================================================-->		
+		<COMMAND name="db get info"
+		         help="DB - Get a database information">
+			<PARAM name="db_name"
+	             help="DB name"
+	             ptype="STRING"/>
+		    <ACTION>
+				source /usr/local/etc/zafu/.zafu;
+				curl -X GET $COUCHDB_HOST_URI/${db_name}/
 			</ACTION>
 		</COMMAND>		
 		 <!--=======================================================-->		
+		<COMMAND name="db get changes"
+		         help="DB - Feed of changes in the database">
+			<PARAM name="db_name"
+	             help="DB name"
+	             ptype="STRING"/>
+		    <ACTION>
+				source /usr/local/etc/zafu/.zafu;
+				curl -X GET $COUCHDB_HOST_URI/${db_name}/_changes
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->		
 		<COMMAND name="db list"
-		         help="List all available databases">
+		         help="DB - List all CouchDB databases">
 		    <ACTION>
 				source /usr/local/etc/zafu/.zafu;
 				curl -X GET $COUCHDB_HOST_URI/_all_dbs
@@ -101,7 +126,7 @@
 		</COMMAND>
 		 <!--=======================================================-->	
 		<COMMAND name="db create"
-		         help="Create new database">
+		         help="DB - Create new database">
 			<PARAM name="db_name"
 	               help="The name to used for the named view"
 	               ptype="STRING"/>
@@ -112,7 +137,7 @@
 		</COMMAND>
 		 <!--=======================================================-->	
 		<COMMAND name="db delete"
-		         help="Delete database">
+		         help="DB - Delete database">
 			<PARAM name="db_name"
 	              help="The name to used for the named view"
 	              ptype="STRING"/>	

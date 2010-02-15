@@ -13,10 +13,10 @@
 		         help="Document operations" />		
 		 <!--=======================================================-->		
 		<COMMAND name="doc create"
-		         help="Document operations" />		
+		         help="Doc - Document operations" />		
 		 <!--=======================================================-->		
 		<COMMAND name="doc create empty"
-		         help="Create an empty document">
+		         help="Doc - Create an empty document">
 			<PARAM name="db_name"
 	             help="Database name"
 	             ptype="STRING"/>
@@ -27,7 +27,7 @@
 		</COMMAND>
 		 <!--=======================================================-->		
 		<COMMAND name="doc create new"
-		         help="Create new document">
+		         help="Doc - Create new document">
 			<PARAM name="db_name"
 	             help="Database name"
 	             ptype="STRING"/>
@@ -42,10 +42,10 @@
 		</COMMAND>
 		 <!--=======================================================-->
 		<COMMAND name="doc get"
-		         help="Document operations" />		
+		         help="Doc - Document operations" />		
 		 <!--=======================================================-->		
 		<COMMAND name="doc get list"
-		         help="Create an empty document">
+		         help="Doc - List all database documents">
 			<PARAM name="db_name"
 	             help="Database name"
 	             ptype="STRING"/>
@@ -56,7 +56,7 @@
 		</COMMAND>
 		 <!--=======================================================-->				
 		<COMMAND name="doc delete"
-		         help="Delete document">
+		         help="Doc - Delete document">
 			<PARAM name="db_name"
 	             help="Database name"
 	             ptype="STRING"/>

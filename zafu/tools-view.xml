@@ -8,16 +8,63 @@
 		<COMMAND name="exit"
                  help="Go back to main menu"
                  view="root-view" />		
-		 <!--=======================================================-->	
-		<COMMAND name="uuid"
+		<!--=======================================================-->			
+		<COMMAND name="tools"
+		         help="Tools - Utilities" />
+		<!--=======================================================-->			
+		<COMMAND name="tools get"
+		         help="Tools - Retrieve commands" />
+		<!--=======================================================-->	
+		<COMMAND name="tools get uuid"
 		         help="Tools - Generate UUID">
-		    <ACTION>curl -X GET http://admin:adminpw@127.0.0.1:5984/_uuids</ACTION>
+			<PARAM name="uuid_count"
+	             help="UUID Count"
+	             ptype="UINT"/>		
+		    <ACTION>
+	                source /usr/local/etc/zafu/.zafu;
+	                curl -X GET $COUCHDB_HOST_URI/_uuids?count=${uuid_count}
+	           </ACTION>
+		</COMMAND>				
+		<!--=======================================================-->		
+		<COMMAND name="tools get hostname"
+		         help="Tools - Display CouchDB hostname">
+		    <ACTION>
+                 source /usr/local/etc/zafu/.zafu; 
+                 echo "CouchDB Hostname:Port = $COUCHDB_HOSTNAME:$COUCHDB_PORT"
+            </ACTION>
+		</COMMAND>
+		<!--=======================================================-->				
+		<COMMAND name="tools get config"
+		         help="Tools - Display server config">
+		    <ACTION>
+                 source /usr/local/etc/zafu/.zafu;
+                 curl -X GET $COUCHDB_HOST_URI/_config
+            </ACTION>
 		</COMMAND>
 		<!--=======================================================-->		
-		<COMMAND name="hostname"
-		         help="Tools - Display CouchDB hostname">
-		    <ACTION>source /usr/local/etc/zafu/.zafu; echo "CouchDB Hostname:Port = $COUCHDB_HOSTNAME:$COUCHDB_PORT"</ACTION>
+		<COMMAND name="tools get stats"
+		         help="Tools - Statistics overview">
+		    <ACTION>
+                 source /usr/local/etc/zafu/.zafu;
+                 curl -X GET $COUCHDB_HOST_URI/_stats
+            </ACTION>
 		</COMMAND>
-		<!--=======================================================-->			
+		<!--=======================================================-->
+		<COMMAND name="tools get tasks"
+		         help="Tools - Display active task list (compaction, replication, etc.)">
+		    <ACTION>
+                 source /usr/local/etc/zafu/.zafu;
+                 curl -X GET $COUCHDB_HOST_URI/_active_tasks
+            </ACTION>
+		</COMMAND>
+		<!--=======================================================-->		
+		<COMMAND name="tools get info"
+		         help="DB - Display database status">
+		    <ACTION>
+				source /usr/local/etc/zafu/.zafu;
+				curl $COUCHDB_HOST_URI
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->		
 	</VIEW>
 </CLISH_MODULE>

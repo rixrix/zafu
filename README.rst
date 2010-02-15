@@ -29,7 +29,7 @@ Installation Steps
 
   $ cp -fr zafu /usr/local/etc/zafu
 
-5.or you may skip #4 and just set the ZAFU_PATH environment variable and point to zafu folder which can be found under the zafu-0.1.0/ root directory::
+5.or you may skip 4 and just set the ZAFU_PATH environment variable and point to zafu folder which can be found under the zafu-0.1.0/ root directory::
   $ this may vary depending on the type of shell you're using. 
 
 6.Issue the zafu command to launch the "zafu" shell::

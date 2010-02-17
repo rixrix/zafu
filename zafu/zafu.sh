@@ -43,7 +43,17 @@ set_tmp_config() {
 	fi
 }
 
+# @see http://wiki.apache.org/couchdb/Tips_%26_Tricks_for_developers
+set_buildcouch() {
+	cd $PATH_TO_COUCHDB_CODE && \
+	./bootstrap && \
+	./configure --prefix=$PATH_TO_COUCHDB_CODE && \
+	make -j4 && \
+	make install
+}
+
 main() {
+	# updates a config value
 	if [ "$SET_CONFIG" == "true" ]; then
 		set_config
 	fi	
@@ -53,12 +63,17 @@ main() {
 		set_tmp_config
 	fi	
 	
+	# build CouchDB from scratch
+	if [ "$BUILDCOUCH" == "true" ]; then
+		set_buildcouch
+	fi
+	
 }
 
 #******************************************************************************
 #                               MAIN                                           
 #******************************************************************************
-while getopts "hrctn:v:d:" OPTION; do
+while getopts "hrctbn:v:d:p:" OPTION; do
 	case $OPTION in
 		c)
 			SET_CONFIG=true			
@@ -75,6 +90,12 @@ while getopts "hrctn:v:d:" OPTION; do
 		d)
 			TMP_DB_NAME=$OPTARG
 			;;
+		b)
+			BUILDCOUCH=true
+			;;
+		p)
+			PATH_TO_COUCHDB_CODE=$OPTARG
+			;;					
 		h)
 			echo "help"
 			usage

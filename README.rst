@@ -47,11 +47,15 @@ for zafu is based from `CLISH <http://clish.sourceforge.net/>`_ project.
 
 Features
 --------
+
 * zafu
+  
   - provides a very simple CLI interface to the CouchDB database
   - command auto-completion and syntax checking
   - takes care of the long/tedious cURL commands
+
 * CLI
+
   - for a more in-depth CLI features have a look at `CLISH <http://clish.sourceforge.net/>`_ "Key Design Points"
 
 Todo

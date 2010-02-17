@@ -10,9 +10,25 @@
 				 view="root-view" />		
 		<!--=======================================================-->
 		<COMMAND name="doc"
-		         help="Doc - A set of commands to execute a Document View" />		
+		         help="Document operations" />		
 		<COMMAND name="doc exec"
 		         help="Doc - A set of commands to execute a Document View" />		
+		<!--=======================================================-->		
+		<COMMAND name="doc compact_view"
+				 help="Doc - Run compact for a particular view on a particular database" >
+			<PARAM name="doc_design_name"
+	             help="Document Design name"
+	             ptype="STRING"/>	
+			<PARAM name="db_name"
+	             help="Database name"
+	             ptype="STRING"
+				 default="default_zafu_db_name"/>
+		    <ACTION>
+				/usr/local/etc/zafu/zafu.sh -t -d ${db_name} ;
+				source /usr/local/etc/zafu/.zafu ;
+				curl -X POST $COUCHDB_HOST_URI/$COUCHDB_DATABASE/_compact/${doc_design_name}
+			</ACTION>			
+	    </COMMAND>		
 		<!--=======================================================-->		
 		<COMMAND name="doc exec design_view"
 				 help="Doc - Execute a Design View" >

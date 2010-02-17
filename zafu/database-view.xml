@@ -117,6 +117,32 @@
 			</ACTION>
 		</COMMAND>
 		 <!--=======================================================-->		
+		<COMMAND name="db get changes_lp"
+		         help="DB - Long-Polling (Efficient Polling) Feed">
+			<PARAM name="db_name"
+	             help="DB name"
+	             ptype="STRING"
+				 default="default_zafu_db_name"/>
+		    <ACTION>
+				/usr/local/etc/zafu/zafu.sh -t -d ${db_name} ;
+				source /usr/local/etc/zafu/.zafu;
+				curl -X GET $COUCHDB_HOST_URI/$COUCHDB_DATABASE/_changes?feed=longpoll
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->		
+		<COMMAND name="db get changes_np"
+		         help="DB - Continuous (Non-Polling) Feed">
+			<PARAM name="db_name"
+	             help="DB name"
+	             ptype="STRING"
+				 default="default_zafu_db_name"/>
+		    <ACTION>
+				/usr/local/etc/zafu/zafu.sh -t -d ${db_name} ;
+				source /usr/local/etc/zafu/.zafu;
+				curl -X GET $COUCHDB_HOST_URI/$COUCHDB_DATABASE/_changes?feed=continuous
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->		
 		<COMMAND name="db list"
 		         help="DB - List all CouchDB databases">
 		    <ACTION>

@@ -3,10 +3,23 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
  xsi:schemaLocation="http://mindginative.com/projects/zafu/XMLSchema
                      http://mindginative.com/projects/zafu/XMLSchema/zafu.xsd">
-	<VIEW name="replication-view" prompt="replication@zafu > ">
+	<VIEW name="replication-view" prompt="rep@zafu > ">
 		<!--=======================================================-->
 		<COMMAND name="exit"
                  help="Go back to main menu"
                  view="root-view" />
+		<!--=======================================================-->
+		<COMMAND name="rep"
+		         help="Replication - CouchDB’s world class replication system">
+			<PARAM name="rep_data"
+	             help="Replication data"
+	             ptype="STRING"/>
+		    <ACTION>
+				source /usr/local/etc/zafu/.zafu ;
+				new_rep_data=`echo "${rep_data}" | sed s/\'/\"/g `;
+				curl -X POST $COUCHDB_HOST_URI/_replicate --data "$new_rep_data"
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->		
 	</VIEW>
 </CLISH_MODULE>

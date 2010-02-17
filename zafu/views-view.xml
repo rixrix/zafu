@@ -3,10 +3,35 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
  xsi:schemaLocation="http://mindginative.com/projects/zafu/XMLSchema
                      http://mindginative.com/projects/zafu/XMLSchema/zafu.xsd">
-	<VIEW name="views-view" prompt="views@zafu > ">
+	<VIEW name="views-view" prompt="view@zafu > ">
 		<!--=======================================================-->
 		<COMMAND name="exit"
-                 help="Go back to main menu"
-                 view="root-view" />		
+				 help="Go back to main menu"
+				 view="root-view" />		
+		<!--=======================================================-->
+		<COMMAND name="doc"
+		         help="Doc - A set of commands to execute a Document View" />		
+		<COMMAND name="doc exec"
+		         help="Doc - A set of commands to execute a Document View" />		
+		<!--=======================================================-->		
+		<COMMAND name="doc exec design_view"
+				 help="Doc - Execute a Design View" >
+			<PARAM name="doc_design_name"
+	             help="Document Design name"
+	             ptype="STRING"/>	
+			<PARAM name="doc_design_view_name"
+	             help="Document Design View name"
+	             ptype="STRING"/>
+			<PARAM name="db_name"
+	             help="Database name"
+	             ptype="STRING"
+				 default="default_zafu_db_name"/>
+		    <ACTION>
+				/usr/local/etc/zafu/zafu.sh -t -d ${db_name} ;
+				source /usr/local/etc/zafu/.zafu ;
+				curl -X GET $COUCHDB_HOST_URI/$COUCHDB_DATABASE/_design/${doc_design_name}/_view/${doc_design_view_name}
+			</ACTION>			
+	    </COMMAND>		
+		<!--=======================================================-->
 	</VIEW>
 </CLISH_MODULE>

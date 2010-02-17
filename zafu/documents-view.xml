@@ -44,7 +44,7 @@
 		<COMMAND name="doc get"
 		         help="Doc - Document operations" />		
 		 <!--=======================================================-->		
-		<COMMAND name="doc get list"
+		<COMMAND name="doc get all_docs"
 		         help="Doc - List all database documents">
 			<PARAM name="db_name"
 	             help="Database name"
@@ -54,6 +54,36 @@
 				curl -X GET $COUCHDB_HOST_URI/${db_name}/_all_docs
 			</ACTION>
 		</COMMAND>
+		 <!--=======================================================-->		
+		<COMMAND name="doc get all_docs_by_seq"
+		         help="Doc - List all the documents that were updated and deleted">
+			<PARAM name="db_name"
+	             help="Database name"
+	             ptype="STRING"/>
+		    <ACTION>
+				source /usr/local/etc/zafu/.zafu ; 
+				curl -X GET $COUCHDB_HOST_URI/${db_name}/_all_docs_by_seq
+			</ACTION>
+		</COMMAND>
+		
+		 <!--=======================================================-->		
+         <!-- DESIGN                                                -->         		
+		 <!--=======================================================-->				
+		<COMMAND name="doc get view_by_design"
+		         help="Doc - Get all document View grouped by Design name">
+			<PARAM name="db_name"
+	             help="Database name"
+	             ptype="STRING"/>
+			<PARAM name="design_name"
+	             help="Design name"
+	             ptype="STRING"/>	
+		    <ACTION>
+				source /usr/local/etc/zafu/.zafu ; 
+				curl -X GET $COUCHDB_HOST_URI/${db_name}/_design/${design_name}
+			</ACTION>
+		</COMMAND>
+		
+						
 		 <!--=======================================================-->				
 		<COMMAND name="doc delete"
 		         help="Doc - Delete document">

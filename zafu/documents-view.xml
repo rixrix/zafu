@@ -76,14 +76,12 @@
 	             ptype="STRING"/>
 			<PARAM name="design_name"
 	             help="Design name"
-	             ptype="STRING"/>	
+	             ptype="STRING"/>
 		    <ACTION>
-				source /usr/local/etc/zafu/.zafu ; 
+				source /usr/local/etc/zafu/.zafu ;
 				curl -X GET $COUCHDB_HOST_URI/${db_name}/_design/${design_name}
 			</ACTION>
 		</COMMAND>
-		
-						
 		 <!--=======================================================-->				
 		<COMMAND name="doc delete"
 		         help="Doc - Delete document">
@@ -103,5 +101,25 @@
 			</ACTION>
 		</COMMAND>
 		 <!--=======================================================-->			
+		<COMMAND name="doc post"
+		         help="Doc - POST Document operations" />
+		 <!--=======================================================-->	
+		<COMMAND name="doc post bulk_docs"
+		         help="Doc - Modify multiple documents w/ a single request" >
+			<PARAM name="doc_data"
+	             help="Document data"
+	             ptype="STRING"/>
+			<PARAM name="db_name"
+	             help="Database name"
+	             ptype="STRING"
+				 default="default_zafu_db_name"/>
+		    <ACTION>
+				/usr/local/etc/zafu/zafu.sh -t -d ${db_name};
+				source /usr/local/etc/zafu/.zafu;
+				new_doc_data=`echo "${doc_data}" | sed s/\'/\"/g `;
+				echo curl -X POST $COUCHDB_HOST_URI/$COUCHDB_DATABASE/_bulk_docs --header "Content-Type: application/json" --data "$new_doc_data"
+			</ACTION>
+		</COMMAND>
+		 <!--=======================================================-->
 	</VIEW>
 </CLISH_MODULE>

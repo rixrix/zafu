@@ -58,7 +58,11 @@ Todo
 * Better documentation 
 * friendly installation process
 * platform packages
-* as a community project this will evolve over the time
+* as a community project this will evolve over the time 
+
+Future
+------
+* Support for document-oriented databases that supports communication over HTTP/RESTful HTTP
 
 License
 -------

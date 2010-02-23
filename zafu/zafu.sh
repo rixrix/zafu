@@ -24,6 +24,7 @@ OPTIONS:
    -n	Config name
    -v   Config value
    -t	Set temp config values
+   -d	Database name
    -v   verbose mode
 
 Copyright (C) 2010 Richard Sentino (richard.sentino@gmail.com)
@@ -38,7 +39,7 @@ set_config() {
 }
 
 set_tmp_config() {
-	if [ "$TMP_DB_NAME" != "default_zafu_db_name" ]; then
+	if [ "$TMP_DB_NAME" != "default_zafu_db_name" ] || [ ! -n "$TMP_DB_NAME" ] ; then
 		`$ZAFU_SCRIPT -c -n TMP_COUCHDB_DATABASE -v $TMP_DB_NAME`
 	fi
 }
@@ -73,7 +74,7 @@ main() {
 #******************************************************************************
 #                               MAIN                                           
 #******************************************************************************
-while getopts "hrctbn:v:d:p:" OPTION; do
+while getopts "hrctdbn:v:p:" OPTION; do
 	case $OPTION in
 		c)
 			SET_CONFIG=true			

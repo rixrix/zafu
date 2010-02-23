@@ -9,8 +9,8 @@
         <ACTION builtin="clish_overview"/>
     </COMMAND>
     <!--=======================================================-->
-    <COMMAND name="logout"
-             help="Logout of the current CLI session">
+    <COMMAND name="quit"
+             help="Quit zafu shell">
         <ACTION builtin="clish_close"/>
     </COMMAND>
     <!--=======================================================-->
